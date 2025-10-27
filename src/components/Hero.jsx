@@ -44,14 +44,14 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{
           duration: 0.5,
-          delay:0.5
+          delay: 0.5,
         }}
         className='relative w-full h-60 pointer-events-none  '>
         {images.map((img, i) => (
           <img
             key={i}
             src={img}
-            className={`absolute  inset-0 w-2/3  mx-auto my-auto  lg:w-1/6 lg:mb-2 md:w-1/3 md:mb-2 sm:w-1/4  transition-opacity duration-1000 ${
+            className={`absolute  inset-0 w-2/3 mb-2 mx-auto my-auto  lg:w-1/6 lg:mb-2 md:w-1/3 md:mb-2 sm:w-1/4  transition-opacity duration-1000 ${
               i === index ? 'opacity-100' : 'opacity-0'
             }`}
           />
