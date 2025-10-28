@@ -7,7 +7,7 @@ import CompanyScroll from './companyScroll';
 const Work = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
   });
   const projects = [
     {
@@ -47,7 +47,7 @@ const Work = () => {
           ref={ref}
           initial={{ opacity: 0, y: 100 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
           className='mb-12 text-gray-400 text-sm md:text-md sm:text-justify text-center'>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus
           eos magnam corrupti amet fuga minima nemo, optio nobis necessitatibus
@@ -98,7 +98,7 @@ const Work = () => {
         ref={ref}
         initial={{ opacity: 0, y: 100 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 0.7, duration: 0.5 }}>
+        transition={{ delay: 0.5, duration: 0.5 }}>
         <CompanyScroll />
       </motion.div>
     </div>

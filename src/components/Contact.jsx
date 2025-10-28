@@ -15,7 +15,7 @@ import {
 const Contact = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
   });
   return (
     <div id='contact'>
@@ -87,7 +87,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{
-              delay: 0.6,
+              delay: 0.5,
               duration: 0.5,
             }}
             className='flex item-center space-x-4'>
@@ -107,7 +107,7 @@ const Contact = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{
-            delay: 0.8,
+            delay: 0.6,
             duration: 0.5,
           }}>
           <div className='text-sm md:text-md grid grid-cols-1 sm:grid-cols-2 gap-4'>
@@ -151,7 +151,7 @@ const Contact = () => {
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{
-          delay: 1,
+          delay: 0.8,
           duration: 0.5,
         }}
         className='mt-16 md:mt-24 flex justify-between items-center p-5 text-white border-t-2 border-purple-500 '>

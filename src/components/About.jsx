@@ -7,7 +7,7 @@ import aboutRobo from '../assets/aboutRobo.json';
 const About = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.2,
+    threshold: 0.1,
   });
   return (
     <div id='about' className='text-white py-16'>
@@ -85,7 +85,7 @@ const About = () => {
               initial={{ opacity: 0, y: 100 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                delay: 0.9,
+                delay: 0.8,
                 duration: 0.3,
               }}
               className='text-sm sm:text-base text-gray-300 '>
@@ -108,7 +108,7 @@ const About = () => {
               initial={{ opacity: 0, y: 100 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                delay: 0.9,
+                delay: 0.8,
                 duration: 0.3,
               }}
               className='text-sm sm:text-base text-gray-300 '>

@@ -44,7 +44,7 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{
           duration: 0.5,
-          delay: 0.5,
+          delay: 0.3,
         }}
         className='relative w-full h-60 pointer-events-none  '>
         {images.map((img, i) => (
@@ -71,7 +71,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.5,
-            delay: 1,
+            delay: 0.5,
           }}
           className='text-3xl md:text-5xl lg:text-6xl flex flex-col gap-4 font-bold mb-4'>
           Your Story , Your Way
@@ -80,7 +80,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.5,
-              delay: 1.1,
+              delay: 0.6,
             }}
             className='text-purple-500'>
             Design Your Story, Digitally
@@ -92,7 +92,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.5,
-            delay: 1.2,
+            delay: 0.7,
           }}
           className='text-gray-400 text-sm md:text-lg mb-8'>
           Showacsing my Journey by creating a personal portfolio website
@@ -103,7 +103,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{
               duration: 0.5,
-              delay: 1.5,
+              delay: 1,
             }}
             className='bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600  transition delay-75'>
             <Link to='contact' smooth={true} duration={500} offset={-70}>
@@ -115,7 +115,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{
               duration: 0.5,
-              delay: 1.5,
+              delay: 1,
             }}
             className='text-white border border-white px-6 py-3 rounded-lg  hover:border-purple-400 transition delay-75'>
             <Link to='about' smooth={true} duration={500} offset={-70}>
