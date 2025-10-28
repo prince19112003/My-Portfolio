@@ -32,8 +32,7 @@ const About = () => {
             duration: 0.5,
           }}
           className='mb-12 text-gray-400 text-center text-sm  md:text-md'>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae quia,
-          deleniti quod ducimus.
+          From bugs to breakthroughs — I craft digital experiences with purpose.
         </motion.p>
         <div className='flex flex-col md:flex-row justify-center items-center sm:justify-around'>
           <motion.div

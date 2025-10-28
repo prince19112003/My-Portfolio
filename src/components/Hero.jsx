@@ -83,7 +83,7 @@ const Hero = () => {
               delay: 1.1,
             }}
             className='text-purple-500'>
-            Build your Personal Portfolio
+            Design Your Story, Digitally
           </motion.span>
         </motion.h1>
 
@@ -95,7 +95,7 @@ const Hero = () => {
             delay: 1.2,
           }}
           className='text-gray-400 text-sm md:text-lg mb-8'>
-          Showacsing your Journey by creating a personal portfolio website
+          Showacsing my Journey by creating a personal portfolio website
         </motion.p>
         <div className='flex justify-center space-x-4 mb-10'>
           <motion.button
