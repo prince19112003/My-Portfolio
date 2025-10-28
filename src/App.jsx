@@ -8,7 +8,7 @@ import Cursor from './components/Cursor'
 
 const App = () => {
   return (
-    <div className='bg-[#0e0c1e] w-full '>
+    <div className='bg-[#0e0c1e]  '>
       <Cursor/>
       <Navbar />
       <Hero />
