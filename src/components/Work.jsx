@@ -16,7 +16,7 @@ const Work = () => {
       id: 1,
       title: 'QR Code Generator',
       desc: ' Instantly create customizable QR codes for links, text, or contact details.',
-      image: project1,
+      image: project3,
       link: 'https://prince19112003.github.io/Qr-Code-Gen/',
     },
     {
@@ -30,7 +30,7 @@ const Work = () => {
       id: 3,
       title: 'Avatar Generator',
       desc: ' Design unique digital avatars to represent your identity or brand.',
-      image: project3,
+      image: project1,
       link: 'https://prince19112003.github.io/Avatar-Generator-2/',
     },
   ];
