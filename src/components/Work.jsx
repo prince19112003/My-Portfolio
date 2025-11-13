@@ -51,9 +51,9 @@ const Work = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4, duration: 0.5 }}
           className='mb-12 text-gray-400 text-sm md:text-md sm:text-justify text-center'>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus
-          eos magnam corrupti amet fuga minima nemo, optio nobis necessitatibus
-          quia?
+          Selected projects that highlight my journey in frontend development,
+          combining React.js, Tailwind CSS, and a passion for user‑friendly
+          design.
         </motion.p>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8'>
           {projects.map(project => (

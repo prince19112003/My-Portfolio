@@ -40,8 +40,8 @@ const Contact = () => {
             duration: 0.5,
           }}
           className='text-slate-400 mt-4 text-sm sm:text-md'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
-          cumque quia.
+          Let’s build something impactful together — I turn ideas into seamless
+          digital experiences.
         </motion.p>
       </div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 grid grid-cols-1 md:grid-cols-2 gap-8'>
@@ -60,7 +60,7 @@ const Contact = () => {
             </div>
             <div>
               <p className='text-lg font-medium text-purple-500'>Call me</p>
-              <p className='text-white'>+91 XXXXX XXXXX</p>
+              <p className='text-white'>+91 XXXXX X7659</p>
             </div>
           </motion.div>
 
@@ -78,7 +78,7 @@ const Contact = () => {
             </div>
             <div>
               <p className='text-lg font-medium text-purple-500'>Email</p>
-              <p className='text-white'>abc999@mail.com</p>
+              <p className='text-white'>prince19112003@outlook.com</p>
             </div>
           </motion.div>
 
@@ -96,7 +96,7 @@ const Contact = () => {
             </div>
             <div>
               <p className='text-lg font-medium text-purple-500'>Address</p>
-              <p className='text-white'>xyz,XXX,India</p>
+              <p className='text-white'>Bilaspur, CG, India</p>
             </div>
           </motion.div>
         </div>
@@ -158,7 +158,7 @@ const Contact = () => {
         <p className='text-sm md:text-md font-semibold'>
           Right Reserved bla bla bla
         </p>
-        <p className='text-sm md:text-md font-semibold'>IRON MAN</p>
+        <p className='text-sm md:text-md font-semibold'>@ PRINCE</p>
         <div className='grid grid-cols-2 gap-2 md:flex justify-center space-x-4 text-white mt-4 border-white '>
           <a href='' className='hover:text-blue-500 '>
             <FaFacebook className='h-6 w-6' />
