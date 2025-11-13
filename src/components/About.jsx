@@ -60,11 +60,11 @@ const About = () => {
               delay: 0.5,
               duration: 0.5,
             }}
-            className='md:w-1/2 text-gray-400 px-4 md:px-0  text-sm md:text-xl text-center md:text-justify '>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-            suscipit tempore, tenetur culpa delectus ullam accusamus fugit,
-            fugiat rem veritatis cumque exercitationem, illum iste incidunt
-            natus voluptatem eligendi. Alias, odio.
+            className='md:w-1/2 text-gray-400 px-4 md:px-0  text-xs md:text-xl text-center md:text-justify '>
+            🎓 CSE Graduate with strong software development foundation <br /> 💻
+            Frontend Developer specializing in modern web apps <br /> ⚛️ Skilled in
+            React.js for dynamic UIs <br /> 🎨 Proficient in Tailwind CSS for fast,
+            clean styling <br />🚀 Passionate about performance, design & usability
           </motion.p>
         </div>
 

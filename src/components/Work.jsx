@@ -1,5 +1,7 @@
 import React from 'react';
 import project1 from '../assets/project1.png';
+import project2 from '../assets/project2.webp';
+import project3 from '../assets/project3.webp';
 import { motion } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import CompanyScroll from './companyScroll';
@@ -12,24 +14,24 @@ const Work = () => {
   const projects = [
     {
       id: 1,
-      title: 'Name 1',
-      desc: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, maiores.',
+      title: 'QR Code Generator',
+      desc: ' Instantly create customizable QR codes for links, text, or contact details.',
       image: project1,
-      link: '#',
+      link: 'https://prince19112003.github.io/Qr-Code-Gen/',
     },
     {
       id: 2,
-      title: 'Name 2',
-      desc: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, maiores.',
-      image: project1,
-      link: '#',
+      title: 'Memory Card',
+      desc: 'Challenge your focus and recall with a fun card‑matching puzzle.',
+      image: project2,
+      link: 'https://prince19112003.github.io/Memory-Card-Game/index.html',
     },
     {
       id: 3,
-      title: 'Name 3',
-      desc: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, maiores.',
-      image: project1,
-      link: '#',
+      title: 'Avatar Generator',
+      desc: ' Design unique digital avatars to represent your identity or brand.',
+      image: project3,
+      link: 'https://prince19112003.github.io/Avatar-Generator-2/',
     },
   ];
   return (
@@ -80,12 +82,15 @@ const Work = () => {
                     Details
                   </motion.button>
                   {/* --------new btn-------- */}
-                  <motion.button
+                  <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className='text-purple-400 border-2 rounded-lg border-slate-400 px-4 py-2 hover:bg-slate-800 hover:text-white transition text-sm sm:text-md  delay-75'>
+                    href={project.link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-purple-400 border-2 rounded-lg border-slate-400 px-4 py-2 hover:bg-slate-800 hover:text-white transition text-sm sm:text-md delay-75'>
                     Demo
-                  </motion.button>
+                  </motion.a>
                   {/* -------------- */}
                   {/* ------------------------------ */}
                 </div>
