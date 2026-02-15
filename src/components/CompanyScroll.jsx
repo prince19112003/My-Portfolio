@@ -1,81 +1,39 @@
-import React from 'react';
-import { motion, transform } from 'motion/react';
-import { InView } from 'react-intersection-observer';
-import { animate } from 'motion';
-import { SiTransmission } from 'react-icons/si';
-
 const CompanyScroll = () => {
-  const companies = [
-    'W3Schools',
-    'Zeus Learning',
-    'ResillenceSoft',
-    'DigitalSakha',
-    'Intellipaat ',
-    'IBM',
-    'Swayam',
-    'NPTEL',
+  const technologies = [
+    { name: 'React', icon: <Code2 /> },
+    { name: 'Node.js', icon: <Terminal /> },
+    { name: 'Three.js', icon: <Globe /> },
+    { name: 'Tailwind', icon: <Palette /> },
+    { name: 'Next.js', icon: <Layout /> },
+    { name: 'Figma', icon: <Palette /> },
+    { name: 'TypeScript', icon: <Code2 /> },
+    { name: 'GraphQL', icon: <Zap /> },
   ];
-  const companyList = [...companies, ...companies]; //For doubling list
-  const scrollVariantA = {
-    animate: {
-      x: [0, -2000],
-      transition: {
-        x: { repeat: Infinity,
-            repeatType:"loop",
-            duration:15,
-            ease:"linear"
 
-         },
-      },
-    },
-  };
-  const scrollVariantB = {
-    animate: {
-      x: [ -2000,0],
-      transition: {
-        x: { repeat: Infinity,
-            repeatType:"loop",
-            duration:15,
-            ease:"linear"
-
-         },
-      },
-    },
-  };
   return (
-    <div className='text-white py-16 '>
-      <div className='container mx-auto text-center'>
-        <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold mb-16 md:mb-12'>
-          Companies I used For Learning
-        </h2>
-        <div className='overflow-hidden relative w-full mb-10'>
-          <motion.div variants={scrollVariantA}
-          animate="animate"
-          className='whitespace-nowrap space-x-10'>
-            {companyList.map((company, index) => (
-              <div
-                key={index}
-                className='text-sm md:text-lg bg-gray-800 px-6 py-3 rounded-full inline-block'>
-                {company}
-              </div>
-            ))}
-          </motion.div>
-        </div>
-        <div className='overflow-hidden relative w-full mt-5'>
-          <motion.div variants={scrollVariantB} animate="animate"
-          className='whitespace-nowrap space-x-10'>
-            {companyList.map((company, index) => (
-              <div
-                key={index}
-                className=' text-sm md:text-lg bg-gray-800 px-6 py-3 rounded-full inline-block'>
-                {company}
-              </div>
-            ))}
-          </motion.div>
-        </div>
+    <div className="w-full py-16 bg-black border-y border-white/5 relative overflow-hidden group">
+      {/* Gradient Masks */}
+      <div className="absolute top-0 left-0 h-full w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
+      <div className="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
+
+      <div className="flex w-[200%] animate-scroll group-hover:[animation-play-state:paused]">
+        {[...technologies, ...technologies, ...technologies].map((tech, index) => (
+          <div key={index} className="flex items-center space-x-3 mx-12 group/item cursor-default transition-all hover:scale-110 hover:text-white">
+            <span className="text-gray-600 group-hover/item:text-purple-400 transition-colors">{tech.icon}</span>
+            <span className="text-xl font-bold text-gray-600 group-hover/item:text-white transition-colors">{tech.name}</span>
+          </div>
+        ))}
       </div>
+      <style>{`
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };
-
-export default CompanyScroll;
+ export default CompanyScroll
