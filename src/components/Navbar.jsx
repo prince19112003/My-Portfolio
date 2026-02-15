@@ -1,87 +1,181 @@
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+import React, { useState, useEffect, useRef } from "react";
 
+const centerLinks = ["home", "about", "work"];
+
+const Navbar = () => {
+
+  const [active, setActive] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [indicatorStyle, setIndicatorStyle] = useState({});
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const navRefs = useRef({});
+
+  // Active section detection
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const handleScroll = () => {
+
+      setIsScrolled(window.scrollY > 50);
+
+      const scrollPos = window.scrollY + 200;
+
+      ["hero", "about", "work", "contact"].forEach((id) => {
+
+        const el = document.getElementById(id);
+
+        if (!el) return;
+
+        if (
+          scrollPos >= el.offsetTop &&
+          scrollPos < el.offsetTop + el.offsetHeight
+        ) {
+          setActive(id === "hero" ? "home" : id);
+        }
+
+      });
+
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+
   }, []);
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
+  // Sliding indicator animation
+  useEffect(() => {
+
+    const el = navRefs.current[active];
+
+    if (el) {
+
+      setIndicatorStyle({
+        width: el.offsetWidth + "px",
+        left: el.offsetLeft + "px"
+      });
+
     }
+
+  }, [active]);
+
+  // Lock scroll when mobile open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
+  }, [mobileMenuOpen]);
+
+  const scrollToSection = (id) => {
+
+    const target = id === "home" ? "hero" : id;
+
+    document.getElementById(target)?.scrollIntoView({
+      behavior: "smooth"
+    });
+
+    setMobileMenuOpen(false);
+
   };
 
-  const navLinks = ['About', 'Work', 'Contact'];
-
   return (
-    <nav className={`fixed w-full z-40 transition-all duration-500 ${
-      isScrolled ? 'py-4 bg-black/60 backdrop-blur-xl border-b border-white/5' : 'py-8 bg-transparent'
-    }`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div 
-          onClick={() => scrollToSection('hero')}
-          className="text-2xl font-black tracking-tighter text-white cursor-pointer group relative"
-        >
-          PRINCE
-          <span className="text-purple-500 absolute -bottom-2 right-0 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 text-4xl">.</span>
-        </div>
+    <>
+      {/* NAVBAR */}
+      {!mobileMenuOpen && (
+        <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "py-4" : "py-6"}`}>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-1">
-          {navLinks.map((item) => (
-            <button 
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-              className="px-6 py-2 text-sm font-medium text-gray-400 hover:text-white transition-all relative group overflow-hidden rounded-full hover:bg-white/5"
-            >
-              <span className="relative z-10">{item}</span>
-            </button>
-          ))}
-          <button 
-             onClick={() => scrollToSection('contact')}
-             className="ml-6 px-6 py-2 bg-white text-black text-sm font-bold rounded-full hover:scale-105 transition-transform"
-          >
-            Let's Talk
-          </button>
-        </div>
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
 
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-white p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            <nav className={`relative flex items-center justify-between px-6 py-3 rounded-full border ${isScrolled
+                ? "bg-black/80 backdrop-blur-xl border-white/10 shadow-lg"
+                : "bg-transparent border-transparent"
+              }`}>
+
+              {/* LEFT LOGO */}
+              <div
+                onClick={() => scrollToSection("home")}
+                className="cursor-pointer text-white font-bold text-lg"
+              >
+                PRINCE
+              </div>
+
+              {/* CENTER MENU */}
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2">
+
+                <div className="relative flex gap-6">
+
+                  {/* Sliding indicator */}
+                  <span
+                    className="absolute bottom-0 h-[2px] bg-purple-500 transition-all duration-300"
+                    style={indicatorStyle}
+                  />
+
+                  {centerLinks.map((link) => (
+                    <button
+                      key={link}
+                      ref={(el) => (navRefs.current[link] = el)}
+                      onClick={() => scrollToSection(link)}
+                      className={`capitalize pb-1 transition ${active === link
+                          ? "text-white"
+                          : "text-gray-400 hover:text-white"
+                        }`}
+                    >
+                      {link}
+                    </button>
+                  ))}
+
+                </div>
+
+              </div>
+
+              {/* RIGHT BUTTON */}
+              <div className="hidden md:block">
+
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="px-6 py-2 bg-white text-black rounded-full text-sm font-bold hover:scale-105 transition-transform"
+                >
+                  Contact
+                </button>
+
+              </div>
+
+              {/* MOBILE BTN */}
+              <button
+                className="md:hidden text-white text-2xl"
+                onClick={() => setMobileMenuOpen(true)}
+              >
+                ☰
+              </button>
+
+            </nav>
+
+          </div>
+
+        </header>
+      )}
+
+      {/* MOBILE MENU */}
+      <div className={`fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center gap-8 transition-all duration-500 ${mobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none"
+        }`}>
+
+        <button
+          onClick={() => setMobileMenuOpen(false)}
+          className="absolute top-8 right-8 text-white text-3xl"
         >
-          <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></div>
-          <div className={`w-6 h-0.5 bg-white mb-1.5 transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></div>
-          <div className={`w-6 h-0.5 bg-white transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></div>
+          ✕
         </button>
-      </div>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-black z-30 transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8 ${
-        mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-      }`}>
-        {navLinks.map((item) => (
-          <button 
-            key={item}
-            onClick={() => scrollToSection(item.toLowerCase())}
-            className="text-4xl font-bold text-white hover:text-purple-400 transition-colors"
+        {["home", "about", "work", "contact"].map((sec) => (
+          <button
+            key={sec}
+            onClick={() => scrollToSection(sec)}
+            className="text-4xl text-white capitalize"
           >
-            {item}
+            {sec}
           </button>
         ))}
-        <button 
-          onClick={() => setMobileMenuOpen(false)}
-          className="absolute top-8 right-6 text-white"
-        >
-          Close
-        </button>
+
       </div>
-    </nav>
+    </>
   );
 };
-export default Navbar
+
+export default Navbar;

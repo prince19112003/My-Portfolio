@@ -15,6 +15,7 @@
   "dependencies": {
     "@rive-app/react-canvas": "^4.23.4",
     "lottie-react": "^2.4.1",
+    "lucide-react": "^0.564.0",
     "motion": "^12.23.24",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

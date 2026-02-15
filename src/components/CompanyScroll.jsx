@@ -1,39 +1,88 @@
+import React from "react";
+import {
+  Code2,
+  Terminal,
+  Globe,
+  Palette,
+  Layout,
+  Zap,
+  Database,
+  Layers,
+} from "lucide-react";
+
 const CompanyScroll = () => {
+
   const technologies = [
-    { name: 'React', icon: <Code2 /> },
-    { name: 'Node.js', icon: <Terminal /> },
-    { name: 'Three.js', icon: <Globe /> },
-    { name: 'Tailwind', icon: <Palette /> },
-    { name: 'Next.js', icon: <Layout /> },
-    { name: 'Figma', icon: <Palette /> },
-    { name: 'TypeScript', icon: <Code2 /> },
-    { name: 'GraphQL', icon: <Zap /> },
+    { name: "React", icon: <Code2 />, color: "text-blue-400" },
+    { name: "Node.js", icon: <Terminal />, color: "text-green-500" },
+    { name: "Three.js", icon: <Globe />, color: "text-white" },
+    { name: "Tailwind", icon: <Palette />, color: "text-cyan-400" },
+    { name: "Next.js", icon: <Layout />, color: "text-white" },
+    { name: "Figma", icon: <Palette />, color: "text-pink-500" },
+    { name: "TypeScript", icon: <Code2 />, color: "text-blue-500" },
+    { name: "GraphQL", icon: <Zap />, color: "text-pink-400" },
+    { name: "PostgreSQL", icon: <Database />, color: "text-blue-300" },
+    { name: "Docker", icon: <Layers />, color: "text-blue-600" },
   ];
 
   return (
-    <div className="w-full py-16 bg-black border-y border-white/5 relative overflow-hidden group">
-      {/* Gradient Masks */}
-      <div className="absolute top-0 left-0 h-full w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
-      <div className="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
+    <section className="w-full py-24 bg-black relative overflow-hidden flex flex-col items-center justify-center">
 
-      <div className="flex w-[200%] animate-scroll group-hover:[animation-play-state:paused]">
-        {[...technologies, ...technologies, ...technologies].map((tech, index) => (
-          <div key={index} className="flex items-center space-x-3 mx-12 group/item cursor-default transition-all hover:scale-110 hover:text-white">
-            <span className="text-gray-600 group-hover/item:text-purple-400 transition-colors">{tech.icon}</span>
-            <span className="text-xl font-bold text-gray-600 group-hover/item:text-white transition-colors">{tech.name}</span>
-          </div>
-        ))}
+    
+      {/* Scroll Container */}
+      <div
+        className="w-full max-w-7xl mx-auto overflow-hidden relative group"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        }}
+      >
+
+        <div className="flex whitespace-nowrap animate-marquee group-hover:[animation-play-state:paused]">
+
+          {[...technologies, ...technologies].map((tech, index) => (
+            <TechItem key={index} tech={tech} />
+          ))}
+
+        </div>
+
       </div>
+
+      {/* Animation */}
       <style>{`
-        @keyframes scroll {
+        @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
+
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
         }
       `}</style>
-    </div>
+
+    </section>
   );
 };
- export default CompanyScroll
+
+// Tech Item Component
+const TechItem = ({ tech }) => (
+  <div className="group/item flex flex-col items-center gap-4 mx-10 cursor-pointer transition-all duration-300">
+
+    {/* Icon */}
+    <div
+      className={`p-4 rounded-2xl bg-white/5 border border-white/10 shadow-lg backdrop-blur-sm transition-all duration-500 group-hover/item:scale-110 group-hover/item:border-white/20 group-hover/item:bg-white/10 ${tech.color} grayscale group-hover/item:grayscale-0`}
+    >
+      {React.cloneElement(tech.icon, { size: 32, strokeWidth: 1.5 })}
+    </div>
+
+    {/* Name */}
+    <span className="text-sm font-semibold text-gray-500 group-hover/item:text-white transition-colors duration-300">
+      {tech.name}
+    </span>
+
+  </div>
+);
+
+export default CompanyScroll;
